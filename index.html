@@ -1,2 +1,116 @@
 <!doctype html>
 <html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="referrer" content="never" />
+    <title>VueJs New York Times Movie Reviews</title>
+
+    <link rel="icon" href="public/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="public/style.css" type="text/css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div id="app">
+      <h3>New York Times Movie Reviews</h3>
+      <form v-on:submit.prevent="onSubmit">
+        <div class="form-group form-group-sm">
+
+          <label for="movieTitle">Title</label>
+          <input type="text" class="form-control" id="movieTitle"
+            v-model="movieTitle"
+            v-on:change="reloadData()">
+
+          <label for="movieHeadLine">Headline</label>
+          <input type="text" class="form-control" id="movieHeadline"
+            v-model="movieHeadline"
+            v-on:change="reloadData()">
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" v-on:change="reloadData()" > NYT Critics Choice?</label>
+          </div>
+
+        </div>
+        <input type="submit" value="Submit" class="btn btn-success">
+      </form>
+
+      <h3>Reviews</h3>
+      <ol>
+        <li v-for="review in reviews">
+          <label>
+            <input type="checkbox"
+              v-on:change="toggle(review)"
+              v-bind:checked="review.pick">
+
+            <del v-if="review.done">
+              {{ review.text }}
+            </del>
+            <span v-else>
+              {{ review.text }}
+            </span>
+          </label>
+        </li>
+      </ol>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+<div id="app">
+    <div class="header">
+        <h1>New York Times Movie Reviews</h1>
+
+        <form class="searchbar" v-on:submit.prevent="onSubmit">
+          <input placeholder="Search for reviews" v-model="newSearch">
+          <input type="submit" value="search" class="btn">
+        </form>
+
+
+    </div>
+
+    <div class="main">
+        <div>
+          <div v-if="loading" class="search-results">
+            Loading ...
+          </div>
+          <div v-else class="search-results">
+            Found {{ items.length }} results for search term {{ lastSearch }}
+          </div>
+            <div class="product" v-for="(item,index) in items">
+              <div>
+                <div class="product-image">
+                  <img v-bind:src="item.link">
+                </div>
+              </div>
+              <div>
+                <h4 class="product-title">{{item.title | capitalize }}</h4>
+                  <p>Price: <strong> {{ price | currency }} </strong></p>
+                  <button class="btn add-to-cart" @click="addItem(index)">AddToCart</button>
+              </div>
+            </div>
+            <div id="product-list-bottom" style="height:20px"
+              v-if="noMoreItems">
+              No more items.
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/vue-resource/dist/vue-resource.js"></script>
+<script type="text/javascript" src="public/script.js"></script>
+
+</body>
+
+</html>
