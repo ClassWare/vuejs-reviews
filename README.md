@@ -1,4 +1,4 @@
-# vuejs-nyt-reviews
-New York Times Movie Reviews
+# vuejs-reviews
+Simple Movie Review Search
 
-An exercise aimed at accessing movie reviews via new york times api.
+An exercise aimed at accessing movie reviews via jsonplaceholder api.
