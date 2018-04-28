@@ -1,0 +1,41 @@
+<template>
+    <div id="reviews" class="row list-group">
+        <div v-for="review in reviews" class="item col-xs-4">
+            <div class="thumbnail">
+                <img @click="clickedReview(review)" class="group list-group-image" src="http://placehold.it/30x30/2ad/fff">
+                <div class="caption">
+                    <router-link
+                            :to="{ name: 'reviewDetails', params: { reviewId: review.id }, hash: '#related' }"
+                            tag="h4"
+                            class="group inner list-group-item-heading">
+                        <a>{{ review.title }}</a>
+                    </router-link>
+                    <p class="group inner list-group-item-text">{{ review.body }}</p>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {
+                reviews: []
+            };
+        },
+        methods: {
+            loadReviews() {
+            },
+            clickedReview(review) {
+                this.$router.push({
+                    name: 'reviewDetails',
+                    params: {
+                        reviewId: review.id
+                    }
+                });
+            }
+        }
+    }
+</script>

@@ -1,19 +1,19 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router';
 import App from './App.vue'
-import { routes } from './routes';
+//import VueRouter from 'vue-router';
+//import { routes } from './routes';
 
-Vue.use(VueRouter);
+// Vue.use(VueRouter);
+//
+// const router = new VueRouter({
+//     routes: routes,
+//     mode: 'history'
+// });
 
-const router = new VueRouter({
-    routes: routes,
-    mode: 'history'
-});
-
-export const eventBus = new Vue();
+// export const eventBus = new Vue();
 
 new Vue({
     el: '#app',
     render: h => h(App),
-    router: router
+    // router: router
 });

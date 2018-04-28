@@ -1,0 +1,47 @@
+<template>
+    <div>
+        <p><strong>ID:</strong> {{ review.id }}</p>
+        <p><strong>Title:</strong> {{ review.title }}</p>
+        <p>{{ review.body }}</p>
+    </div>
+</template>
+
+<script>
+    export default {
+        props: {
+            reviewId: {
+                required: true
+            },
+            reviews: {
+                required: true
+            }
+        },
+        data() {
+            return {
+                review: null
+            };
+        },
+        created() {
+            this.review = this.getReview(this.reviewId);
+        },
+        watch: {
+            reviewId(newValue, oldValue) {
+                this.review = this.getreview(newValue);
+                this.discount = this.getDiscount(this.review.price, this.$route.query.discount);
+            }
+        },
+        methods: {
+            getReview(reviewId) {
+                let match = null;
+
+                this.reviews.forEach(function(review) {
+                    if (review.id == reviewId) {
+                        match = review;
+                    }
+                });
+
+                return match;
+            }
+        }
+    }
+</script>

@@ -1,7 +1,7 @@
 {
-  "name": "vuejs-nyt-reviews",
+  "name": "vuejs-reviews",
   "version": "1.0.0",
-  "description": "New York Times Movie Reviews",
+  "description": "Simple Movie Review Search",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./index.js --ignore node_modules/ -e js,html,css"
@@ -9,7 +9,7 @@
   "author": "ClassWare",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ClassWare/vuejs-nyt-reviews"
+    "url": "https://github.com/ClassWare/vuejs-reviews"
   },
   "license": "UNLICENSED",
   "dependencies": {
